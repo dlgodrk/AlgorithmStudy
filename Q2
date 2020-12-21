@@ -1,0 +1,55 @@
+public class Main {
+    public static void main(String[] args){
+        String[] test = {"kimchi 100", "ramen 200", "chicken 300","kimchi 120","pizza 150","sex 500"};
+        Solution s = new Solution();
+        System.out.println(s.solution(3,test));
+    }
+}
+class Solution{
+    public int solution(int K, String[] user_scores){
+        int answer = 0;
+        int N = user_scores.length;
+        nameScore[] rankList = new nameScore[K];
+        int s = -1;
+        for(int i = 0; i < K; i++){
+            rankList[i] = new nameScore("a",s--);
+        }
+        for(int i = 0; i < N; i++){
+            String[] info = user_scores[i].split(" ");
+            String name = info[0];
+            int score = Integer.parseInt(info[1]);
+            nameScore ns = new nameScore(name,score);
+            for(int j = 0 ; j < K; j++){
+                if(score > rankList[j].score && !name.equals(rankList[j].name)){
+                    answer++;
+                    for(int k = K-1; k > j; k--){
+                        rankList[k] = rankList[k-1];
+                    }
+                    rankList[j] = ns;
+                    for(nameScore check : rankList){
+                        System.out.println(check.name+" "+check.score);
+                    }
+                    System.out.println();
+                    break;
+                }
+            }
+        }
+        return answer;
+    }
+}
+class nameScore implements Comparable<nameScore>{
+    String name;
+    int score;
+    public nameScore(String n, int s){
+        name = n;
+        score = s;
+    }
+
+    @Override
+    public int compareTo(nameScore o) {
+        if(score != o.score){
+            return o.score - score;
+        }
+        return name.compareTo(o.name);
+    }
+}
