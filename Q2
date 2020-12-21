@@ -43,19 +43,11 @@ class Solution{
         return answer;
     }
 }
-class nameScore implements Comparable<nameScore>{
+class nameScore{
     String name;
     int score;
     public nameScore(String n, int s){
         name = n;
         score = s;
-    }
-
-    @Override
-    public int compareTo(nameScore o) {
-        if(score != o.score){
-            return o.score - score;
-        }
-        return name.compareTo(o.name);
     }
 }
