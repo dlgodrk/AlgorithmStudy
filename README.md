@@ -1,4 +1,4 @@
 # AlgorithmStudy
 
-### One Day One Problem!
+### Algorithm Errday!
 ### 2020/12/21 START! 
