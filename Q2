@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args){
-        String[] test = {"kimchi 100", "ramen 200", "chicken 300","kimchi 120","pizza 150","pasta 500"};
+        String[] test = {"kimchi 100","kimchi 80", "ramen 200", "chicken 300","kimchi 120","chicken 350", "pizza 150","pasta 500"};
         Solution s = new Solution();
         System.out.println(s.solution(3,test));
     }
@@ -27,15 +27,18 @@ class Solution{
                 if(score > rankList[j].score){
                     if(!name.equals(rankList[j].name)) {
                         answer++;
-                    }
-                    for (int k = K - 1; k > j; k--) {
-                        rankList[k] = rankList[k - 1];
+                        for (int k = K - 1; k > j; k--) {
+                            rankList[k] = rankList[k - 1];
+                        }
                     }
                     rankList[j] = ns;
                     for (nameScore check : rankList) {
                         System.out.println(check.name + " " + check.score);
                     }
                     System.out.println();
+                    break;
+                }
+                if(name.equals(rankList[j].name)){
                     break;
                 }
             }
